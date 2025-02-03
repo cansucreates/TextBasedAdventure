@@ -8,4 +8,5 @@ public class Room : ScriptableObject /* This is a scriptable object, which is a 
     [TextArea] // This attribute will make the description field appear as a multi-line text area in the Unity Editor
     public string description; // This is a string that will hold the description of the room
     public string roomName; // This is a string that will hold the name of the room
+    public Exit[] exits; // This is an array of Exit objects that will hold the exits of the room
 }

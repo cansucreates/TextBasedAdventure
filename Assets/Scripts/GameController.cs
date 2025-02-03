@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public RoomNavigation roomNavigation; // This is a reference to the RoomNavigation script
+
+    [HideInInspector]
+    public List<string> interactionDescriptionsInRoom = new List<string>(); // This will store the descriptions of the interactions in the room
     List<string> actionLog = new List<string>(); // This will store the player's actions
 
     void Awake() // This will be called when the script is loaded
@@ -30,8 +33,27 @@ public class GameController : MonoBehaviour
 
     public void DisplayRoomText()
     {
-        string combinedText = roomNavigation.currentRoom.description + "\n"; // This will store the description of the current room
+        ClearCollectionsForNewRoom(); // This will clear the collections for the new room
+        UnpackRoom();
+
+        string joinedInteractionDescriptions = string.Join(
+            "\n",
+            interactionDescriptionsInRoom.ToArray()
+        ); // This will join all the strings in the interaction descriptions with a new line character
+        string combinedText =
+            roomNavigation.currentRoom.description + "\n" + joinedInteractionDescriptions; // This will store the description of the current room
         LogStringWithReturn(combinedText); // This will add the description of the current room to the action log
+    }
+
+    private void UnpackRoom()
+    {
+        roomNavigation.UnpackExitsInRoom(); // This will unpack the exits in the current room
+    }
+
+    void ClearCollectionsForNewRoom()
+    {
+        interactionDescriptionsInRoom.Clear(); // This will clear the interaction descriptions in the room
+        roomNavigation.ClearExits(); // This will clear the exits in the room
     }
 
     public void LogStringWithReturn(string stringToAdd)
