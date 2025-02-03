@@ -5,8 +5,7 @@ using UnityEngine;
 public class Room : ScriptableObject /* This is a scriptable object, which is a type of asset that can be created 
  in the Unity Editor and saved as a file in your project folder */
 {
-[TextArea]    // This attribute will make the description field appear as a multi-line text area in the Unity Editor
-public string description; // This is a string that will hold the description of the room
-public string roomName; // This is a string that will hold the name of the room
-
+    [TextArea] // This attribute will make the description field appear as a multi-line text area in the Unity Editor
+    public string description; // This is a string that will hold the description of the room
+    public string roomName; // This is a string that will hold the name of the room
 }
