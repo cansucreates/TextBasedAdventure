@@ -21,7 +21,7 @@ public class RoomNavigation : MonoBehaviour
         }
     }
 
-    void AttempToChangeRooms(string directionNoun)
+    public void AttempToChangeRooms(string directionNoun)
     {
         if (exitDictionary.ContainsKey(directionNoun))
         {

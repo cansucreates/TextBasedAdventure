@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public Text displayText; // This is a reference to the Text component that will display the game text
+    public InputAction[] inputActions; // This is an array of InputAction objects that will store the player's actions
 
     [HideInInspector]
     public RoomNavigation roomNavigation; // This is a reference to the RoomNavigation script

@@ -18,6 +18,19 @@ public class TextInput : MonoBehaviour
     {
         userInput = userInput.ToLower();
         controller.LogStringWithReturn(userInput);
+
+        char[] delimiterCharacters = { ' ' }; // This is an array of characters that will be used to split the user input
+        string[] separatedInputWords = userInput.Split(delimiterCharacters); // This will split the user input into an array of words
+
+        for (int i = 0; i < controller.inputActions.Length; i++) // This will loop through all the input actions
+        {
+            InputAction inputAction = controller.inputActions[i]; // This will store the current input action in a variable
+            if (inputAction.keyWord == separatedInputWords[0]) // This will check if the first word in the user input matches the keyword of the input action
+            {
+                inputAction.RespondToInput(controller, separatedInputWords); // This will call the RespondToInput method of the input action
+            }
+        }
+
         InputComplete();
     }
 
